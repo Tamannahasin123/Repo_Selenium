@@ -1,0 +1,73 @@
+package Class5;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class Homework4 {
+
+        /**
+         * Tc-1: darksky.net
+         * Verify blog post date is showing in correct format Monthname, Date Year
+         */
+        @Test
+                public void VerifyBlog() {
+
+                System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver");
+                WebDriver driver = new ChromeDriver();
+                driver.get("https://www.darksky.net");
+
+                try {
+                        Thread.sleep(2000);     // 1 sec = 1000milliseconds
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+
+                String BlogDateXpath = "//time[text()='June 7, 2021']";
+                By BlogPostDateLocator = By.xpath(BlogDateXpath);
+                WebElement BlogPostDate = driver.findElement(BlogPostDateLocator);
+
+        }
+
+                /**
+                 * TC-2: Verify the correct roomCount and guestCount on Homepage
+                 *
+                 * Launch hotels.com
+                 * update adults count
+                 * update children count
+                 * verify the correct count for room, adults and children in guest section
+                 * verify the correct total-count for room, adults and children in search bar
+                 *
+                 */
+
+
+                @Test
+                public void verifyCount() {
+
+                System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver");
+                WebDriver driver = new ChromeDriver();
+                driver.get("https://www.hotels.com");
+
+                try {
+                        Thread.sleep(2000);     // 1 sec = 1000milliseconds
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+
+                String adultcountXpath = "//span[text()='1 room, 2 guests']/following-sibling::input//[text()='hidden']";
+                By adultCountLocator = By.xpath(adultcountXpath);
+                WebElement AdultCount = driver.findElement(adultCountLocator);
+                AdultCount.sendKeys("2");
+
+                String ChildcountXpath = "//span[text()='1 room, 2 guests']/following-sibling::input//[text()='hidden']";
+                By ChildCountLocator = By.xpath(ChildcountXpath);
+                WebElement ChildCount = driver.findElement(ChildCountLocator);
+                ChildCount.sendKeys("1");
+
+                String correctCount = "Count for room, adults and children";
+
+        }
+}
