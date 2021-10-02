@@ -26,9 +26,23 @@ public class Homework4 {
                         e.printStackTrace();
                 }
 
-                String BlogDateXpath = "//time[text()='June 7, 2021']";
+                // Click on Dark Sky API
+
+                String DarkSkyAPIXpath = "//a[@href='Dark Sky API']";
+                By DarkSkyAPILocator = By.xpath(DarkSkyAPIXpath);
+                WebElement DarkSkyAPIbox = driver.findElement(DarkSkyAPILocator);
+                DarkSkyAPIbox.click();
+
+                // Click on Blog post
+                String BlogPostXpath = "//a[text()='blog post']";
+                By BlogPostLocator = By.xpath(BlogPostXpath);
+                WebElement BlogPostLink = driver.findElement(BlogPostLocator);
+                BlogPostLink.click();
+
+                String BlogDateXpath = "//time[@itemprop='datePublished'])[1]]";
                 By BlogPostDateLocator = By.xpath(BlogDateXpath);
                 WebElement BlogPostDate = driver.findElement(BlogPostDateLocator);
+                BlogPostDate.click();
 
         }
 
