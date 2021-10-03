@@ -98,14 +98,14 @@ public class Homework2 {
         driver.findElement(By.xpath("//*[text()='New password']")).sendKeys("abc@123");
 
         //Click the "Sign Up" button
-        driver.findElement(By.xpath("//*[text()='Sign Up' and @xpath='1']")).click();
+        driver.findElement(By.xpath("//button[text()='Sign Up' and @name=websubmit]")).click();
 
         //verify "Please choose a gender. You can change who can see this later."
 
-        String actualText = driver.findElement(By.xpath("//div[@xpath='1']='Please choose a gender. You can change who can see this later']")).getText();
+        String actualText = driver.findElement(By.xpath("//div[contains(text(), 'You can change who sees your gender ')]")).getText();
 
-        String expectedText = "Please choose a gender. You can change who can see this later";
-        Assert.assertEquals(actualText, expectedText, "Please choose a gender");
+        String expectedText = "Please choose a gender. You can change who can see this later.";
+        Assert.assertEquals(actualText, expectedText, "Expected text is not matching.");
         driver.quit();
 
 
@@ -142,6 +142,25 @@ public class Homework2 {
         By MessengerLocator = By.linkText(messengerLink);
         WebElement createNewAcct = driver.findElement(MessengerLocator);
         createNewAcct.click();
+
+        //get value of "href" using getAttribute method (String)  [https://messenger.com/]
+        String messengerWebLink = "//a[@href='https://messenger.com/']";
+        By MessengerWebLocator = By.linkText(messengerWebLink);
+        WebElement GetValueMessengerLink = driver.findElement(MessengerWebLocator);
+        GetValueMessengerLink.getAttribute("https://messenger.com/]");
+
+        //Click "Messenger" link
+        driver.findElement(By.xpath("//a[text()='Messenger']")).click();
+
+        //Verify user lands on correct webpage
+        String actualText = driver.findElement(By.xpath("//div[contains(text(), 'Messenger makes it easy')]")).getText();
+
+        String expectedText = "Messenger makes it easy and fun to stay close to your favorite people.";
+        Assert.assertEquals(actualText, expectedText, "Expected text is matching.");
+        driver.quit();
+
+
+
 
     }
 
