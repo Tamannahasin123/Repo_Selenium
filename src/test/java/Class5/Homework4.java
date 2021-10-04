@@ -39,6 +39,7 @@ public class Homework4 {
                 WebElement BlogPostLink = driver.findElement(BlogPostLocator);
                 BlogPostLink.click();
 
+                //correct format Monthname, Date Year
                 String BlogDateXpath = "//time[@itemprop='datePublished'])[1]]";
                 By BlogPostDateLocator = By.xpath(BlogDateXpath);
                 WebElement BlogPostDate = driver.findElement(BlogPostDateLocator);
@@ -71,17 +72,22 @@ public class Homework4 {
                         e.printStackTrace();
                 }
 
+                //update adults count
                 String adultcountXpath = "//span[text()='1 room, 2 guests']/following-sibling::input//[text()='hidden']";
                 By adultCountLocator = By.xpath(adultcountXpath);
                 WebElement AdultCount = driver.findElement(adultCountLocator);
                 AdultCount.sendKeys("2");
 
+                //update children count
                 String ChildcountXpath = "//span[text()='1 room, 2 guests']/following-sibling::input//[text()='hidden']";
                 By ChildCountLocator = By.xpath(ChildcountXpath);
                 WebElement ChildCount = driver.findElement(ChildCountLocator);
                 ChildCount.sendKeys("1");
 
+                //verify the correct count for room, adults and children in guest section
                 String correctCount = "Count for room, adults and children";
+
+                //verify the correct total-count for room, adults and children in search bar
 
         }
 }
